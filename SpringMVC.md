@@ -79,7 +79,7 @@ public class HelloController implements Controller {
 ```
 - 测试即可
 
-### SpringMVC执行流程
+## SpringMVC执行流程
 1. 用户发送请求至前端控制器DispatcherServlet。
 2. DispatcherServletch接收到请求调用处理器映射器，HandlerMapping。
 3. 处理器映射器根据请求的url找到具体的处理器，生成处理器执行链HandlerExecutionChain(包括处理器对象和拦截器对象)一并返回给DispatcherServlet。
