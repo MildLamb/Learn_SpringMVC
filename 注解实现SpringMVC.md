@@ -60,3 +60,6 @@ public class HelloController {
     }
 }
 ```
+### @RequestMapping
+@RequestMapping: 请求映射
+- 可以作用于类或者方法
