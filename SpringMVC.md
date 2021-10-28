@@ -78,3 +78,16 @@ public class HelloController implements Controller {
 }
 ```
 - 测试即可
+
+### SpringMVC执行流程
+1. 用户发送请求至前端控制器DispatcherServlet。
+2. DispatcherServletch接收到请求调用处理器映射器，HandlerMapping。
+3. 处理器映射器根据请求的url找到具体的处理器，生成处理器执行链HandlerExecutionChain(包括处理器对象和拦截器对象)一并返回给DispatcherServlet。
+4. DispatcherServlet根据处理器Handler获取处理器适配器HandlerAdapter执行HandlerAdapter处理一系列的操作，如：参数封装，数据格式转换等。
+5. 执行处理器Handler。
+6. Handler执行完成返回ModelAndView。
+7. HandlerAdapter将Handler执行结果ModelAndView返回给DispatcherServlet。
+8. DispatcherServlet将ModelAndView传给ViewReslover视图解析器。
+9. ViewReslover解析后返回具体的View。
+10. DispatcherServlet对View进行渲染。
+11. DispatcherServlet响应用户
