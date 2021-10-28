@@ -51,10 +51,12 @@
     </resource>
 </resources>
 </build>
-```
-Cause: com.sun.org.apache.xerces.internal.impl.io.MalformedByteSequenceException: 1 字节的 UTF-8 序列的字节 1 无效  
-一种可能的解决方案:  
+``` 
 ```xml
+<!--
+Cause: com.sun.org.apache.xerces.internal.impl.io.MalformedByteSequenceException: 1 字节的 UTF-8 序列的字节 1 无效  
+一种可能的解决方案: 
+-->
 <properties>
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 </properties>
