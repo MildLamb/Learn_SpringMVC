@@ -104,3 +104,41 @@ public class UserController {
         </mvc:message-converters>
     </mvc:annotation-driven>
 ```
+## fastjson
+- 依赖
+```xml
+<!-- fastjson -->
+<dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>fastjson</artifactId>
+    <version>1.2.78</version>
+</dependency>
+```
+- 测试
+```java
+@GetMapping("/fast")
+    public String fastjson(){
+        List<User> users = new ArrayList<User>();
+
+        User user = new User(1,"千珏",1500);
+        User user2 = new User(2,"纳尔",9);
+        User user3 = new User(3,"妮蔻",16);
+
+        users.add(user);
+        users.add(user2);
+        users.add(user3);
+
+        /*
+            java对象转JSON字符串:JSON.toJSONString;
+            JSON字符串转java对象:JSON.parseObject(jsonString,Pojo.class);
+            java对象 转 JSON对象:JSON.toJSON(pojo);
+            JSON对象 转 java对象:JSON.toJavaObject(jsonObject,Pojo.class);
+        */
+        //java对象转JSON字符串
+        String s = JSON.toJSONString(users);
+        
+        
+
+        return s;
+    }
+```
