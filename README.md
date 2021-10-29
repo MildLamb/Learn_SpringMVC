@@ -61,3 +61,8 @@ Cause: com.sun.org.apache.xerces.internal.impl.io.MalformedByteSequenceException
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 </properties>
 ```
+```bash
+/ 和 /*的区别
+/: 只匹配所有的请求，不会去匹配jsp页面
+/*: 匹配所有的请求，包括jsp页面
+```
