@@ -83,4 +83,24 @@ public class UserController {
     - jackson的方式输出结果为 ： {"id":1,"name":"??","age":1500}
 
 出现??的解决方法
-- 在RequestMapping或GetMapping注解的produces属性中设置这个字符串 @GetMapping(value = "/j1",produces = "application/json;charset=utf-8")
+- 方案一
+在RequestMapping或GetMapping注解的produces属性中设置这个字符串 @GetMapping(value = "/j1",produces = "application/json;charset=utf-8")  
+- 方案二
+在springmvc的配置文件中配置如下
+```xml
+<!-- JSON乱码解决 -->
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8"></constructor-arg>
+            </bean>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper">
+                    <bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
+                        <property name="failOnEmptyBeans" value="false"></property>
+                    </bean>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+```
