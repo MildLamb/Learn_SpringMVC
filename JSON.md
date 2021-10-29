@@ -9,3 +9,40 @@
 - 对象表示为键值对，数据由逗号分隔
 - 花括号保存对象
 - 方括号存储数组
+
+
+### JS对象和JSON之间的转换,通过前端自带的对象JSON的方法实现
+- 将js对象转化为json对象 stringify
+- 将JSON对象转换为JavaScript对象 parse
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript">
+        //编写一个JavaScript对象
+        var user = {
+            name:"千珏",
+            age:1500,
+            sex:"女"
+        }
+
+        //将js对象转化为json对象
+        var json = JSON.stringify(user);
+        console.log("json: " + json)
+
+
+        console.log("=====================")
+
+        //将JSON对象转换为JavaScript对象
+        var obj = JSON.parse('{"name":"千珏","age":1500,"sex":"女"}');
+        console.log(obj)
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+```
