@@ -46,3 +46,41 @@
 </body>
 </html>
 ```
+
+## jackson
+- 导入依赖
+```xml
+<!-- jackson -->
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.13.0</version>
+</dependency>
+```
+- 使用jackson的ObjectMapper中的方法进行对象和字符串之间的转换
+```java
+@Controller
+public class UserController {
+    @GetMapping("/j1")
+    @ResponseBody   //不会走视图解析器,会直接返回一个字符串
+    public String json1() throws JsonProcessingException {
+
+        //jackson 中有一个对象叫 ObjectMapper
+        ObjectMapper mapper = new ObjectMapper();
+
+        //创建一个对象
+        User user = new User(1,"千珏",1500);
+
+        //将对象变为字符串
+        String s = mapper.writeValueAsString(user);
+
+        return s;
+    }
+}
+```
+- 结果
+    - 直接toString输出结果 ：User(id=1, name=??, age=1500)
+    - jackson的方式输出结果为 ： {"id":1,"name":"??","age":1500}
+
+出现??的解决方法
+- 在RequestMapping或GetMapping注解的produces属性中设置这个字符串 @GetMapping(value = "/j1",produces = "application/json;charset=utf-8")
