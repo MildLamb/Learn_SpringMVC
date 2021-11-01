@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iframe测试体验页面无刷新</title>
+
+    <script>
+        function f() {
+            var inputSrc = document.getElementById("url").value;
+            document.getElementById("iframe1").src= inputSrc;
+        }
+    </script>
+
+</head>
+<body>
+
+    <div>
+        <p>请输入地址: </p>
+        <input type="text" id="url" value="http://www.gnardada.com">
+        <input type="button" value="提交" onclick="f()">
+    </div>
+
+    <div>
+        <iframe style="width: 100%;height: 500px" id="iframe1"></iframe>
+    </div>
+</body>
+</html>
